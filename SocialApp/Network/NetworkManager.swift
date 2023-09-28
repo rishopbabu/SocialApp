@@ -57,19 +57,19 @@ class NetworkManager {
             }
             
             if (200..<300).contains(httpResponse.statusCode) {
-                            if let responseData = data {
-                                do {
-                                    let decodedModel = try JSONDecoder().decode(T.self, from: responseData)
-                                    completion(.success(decodedModel))
-                                } catch {
-                                    completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "Failed to decode response data: \(error.localizedDescription)")))
-                                }
-                            } else {
-                                completion(.success(nil))
-                            }
-                        } else {
-                            completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "HTTP status code \(httpResponse.statusCode)")))
-                        }
+                if let responseData = data {
+                    do {
+                        let decodedModel = try JSONDecoder().decode(T.self, from: responseData)
+                        completion(.success(decodedModel))
+                    } catch {
+                        completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "Failed to decode response data: \(error.localizedDescription)")))
+                    }
+                } else {
+                    completion(.success(nil))
+                }
+            } else {
+                completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "HTTP status code \(httpResponse.statusCode)")))
+            }
         }
         task.resume()
     }
