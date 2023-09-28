@@ -14,11 +14,9 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         view.backgroundColor = .red
-        viewModel.getApiData { [weak self] in
-            self?.wellcomeData = self?.viewModel.welcomeModel
-        }
+        viewModel.performNetworkRequest()
+        
     }
 
 
