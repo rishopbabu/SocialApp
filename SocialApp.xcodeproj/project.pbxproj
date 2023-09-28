@@ -105,11 +105,11 @@
 		6C847F162AC4EF1F00A50F4B /* SocialApp */ = {
 			isa = PBXGroup;
 			children = (
-				6CDE1BE92AC5494500E82A9E /* Network */,
 				6C847F4C2AC518C800A50F4B /* Application */,
 				6C847F4D2AC518E600A50F4B /* Controller */,
-				6C847F492AC4F59C00A50F4B /* Model */,
 				6C847F4A2AC4F5A700A50F4B /* ViewModel */,
+				6C847F492AC4F59C00A50F4B /* Model */,
+				6CDE1BE92AC5494500E82A9E /* Network */,
 				6C847F4E2AC51CEC00A50F4B /* SupportingFiles */,
 			);
 			path = SocialApp;
