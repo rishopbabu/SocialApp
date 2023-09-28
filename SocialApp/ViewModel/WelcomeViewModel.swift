@@ -23,21 +23,15 @@ class WelcomeViewModel {
         NetworkManager.shared.sendRequest(url: exampleURL, requestData: requestData, responseType: WelcomeModel.self) { (result) in
             switch result {
             case .success(let data):
-                self.welcomeModel?(data)
-                print("data:", data as Any)
-                
                 if data != nil {
-                        print("Received response: \(String(describing: data))")
-                    } else {
-                        print("Received nil response")
-                    }
-                case .failure(let error):
-                    print("Request failed with error: \(error)")
-                
+                    self.welcomeModel?(data)
+                } else {
+                    print("Received nil response")
+                }
+            case .failure(let error):
+                print("Request failed with error: \(error)")
             }
         }
     }
-
     
-
 }

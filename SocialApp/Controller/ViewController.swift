@@ -26,6 +26,7 @@ class ViewController: UIViewController {
                 self?.messageLabel.text = self?.wellcomeData?.message
             }
         }
+        
         viewModel.performNetworkRequest()
     }
     
