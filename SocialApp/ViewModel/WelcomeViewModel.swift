@@ -9,7 +9,7 @@ import Foundation
 
 class WelcomeViewModel {
     
-    var welcomeModel: WelcomeModel?
+    var welcomeModel: ((WelcomeModel?) -> Void)?
     
     func performNetworkRequest() {
         
@@ -20,21 +20,20 @@ class WelcomeViewModel {
 
         let requestData = NetworkRequest(method: .get, authorizationToken: nil, formData: nil, params: nil)
 
-        NetworkManager.shared.sendRequest(url: exampleURL, requestData: requestData) { (result) in
+        NetworkManager.shared.sendRequest(url: exampleURL, requestData: requestData, responseType: WelcomeModel.self) { (result) in
             switch result {
             case .success(let data):
-                if let responseData = data {
-                    if let responseString = String(data: responseData, encoding: .utf8) {
-                        print("Received response data: \(responseString)")
+                self.welcomeModel?(data)
+                print("data:", data as Any)
+                
+                if data != nil {
+                        print("Received response: \(String(describing: data))")
                     } else {
-                        print("Received response data, but unable to decode to string.")
+                        print("Received nil response")
                     }
-                } else {
-                    print("Received empty response data")
-                }
-
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+                
             }
         }
     }

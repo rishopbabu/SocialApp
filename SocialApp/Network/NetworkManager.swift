@@ -10,7 +10,7 @@ import Foundation
 class NetworkManager {
     static let shared = NetworkManager()
     
-    typealias CompletionHandler = (Result<Data?, NetworkError>) -> Void
+    typealias CompletionHandler<T> = (Result<T?, NetworkError>) -> Void
     
     private let session: URLSession
     
@@ -19,7 +19,7 @@ class NetworkManager {
         session = URLSession(configuration: configuration)
     }
     
-    func sendRequest(url: URL, requestData: NetworkRequest, completion: @escaping CompletionHandler) {
+    func sendRequest<T: Codable>(url: URL, requestData: NetworkRequest, responseType: T.Type,  completion: @escaping CompletionHandler<T>) {
         var request = URLRequest(url: url)
         request.httpMethod = requestData.method?.rawValue
         
@@ -41,7 +41,7 @@ class NetworkManager {
         }
         
         let task = session.dataTask(with: request) { [weak self] (data, response, error) in
-            guard let self = self else {
+            guard self != nil else {
                 completion(.failure(.networkManagerDeallocated))
                 return
             }
@@ -57,10 +57,19 @@ class NetworkManager {
             }
             
             if (200..<300).contains(httpResponse.statusCode) {
-                completion(.success(data))
-            } else {
-                completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "HTTP status code \(httpResponse.statusCode)")))
-            }
+                            if let responseData = data {
+                                do {
+                                    let decodedModel = try JSONDecoder().decode(T.self, from: responseData)
+                                    completion(.success(decodedModel))
+                                } catch {
+                                    completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "Failed to decode response data: \(error.localizedDescription)")))
+                                }
+                            } else {
+                                completion(.success(nil))
+                            }
+                        } else {
+                            completion(.failure(.requestFailed(statusCode: httpResponse.statusCode, message: "HTTP status code \(httpResponse.statusCode)")))
+                        }
         }
         task.resume()
     }
