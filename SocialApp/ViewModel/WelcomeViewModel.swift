@@ -20,8 +20,6 @@ class WelcomeViewModel {
                 print("Welcome Data:", finalData)
                 completon()
             }
-            // Add a print statement here to check if this block is executed more than once.
-            print("Completion handler executed.")
         }.resume()
     }
 }
