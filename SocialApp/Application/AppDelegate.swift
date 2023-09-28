@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  SocialApp
 //
-//  Created by Mac-OBS-51 on 28/09/23.
+//  Created by Rishop Babu on 28/09/23.
 //
 
 import UIKit
@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        window = UIWindow()
-        window?.rootViewController = ViewController()
-        window?.makeKeyAndVisible()
+//        window = UIWindow()
+//        window?.rootViewController = ViewController()
+//        window?.makeKeyAndVisible()
         return true
     }
 

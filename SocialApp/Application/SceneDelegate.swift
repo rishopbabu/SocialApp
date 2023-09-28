@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  SocialApp
 //
-//  Created by Mac-OBS-51 on 28/09/23.
+//  Created by Rishop Babu on 28/09/23.
 //
 
 import UIKit

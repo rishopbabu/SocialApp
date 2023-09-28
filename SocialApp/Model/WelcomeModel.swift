@@ -8,6 +8,6 @@
 import Foundation
 
 // MARK: - Welcome
-struct Welcome: Codable {
-    let message: String
+struct WelcomeModel: Codable {
+    var message: String
 }

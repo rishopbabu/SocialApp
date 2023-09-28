@@ -15,6 +15,8 @@
 		6C847F2F2AC4EF2000A50F4B /* SocialAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C847F2E2AC4EF2000A50F4B /* SocialAppTests.swift */; };
 		6C847F392AC4EF2000A50F4B /* SocialAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C847F382AC4EF2000A50F4B /* SocialAppUITests.swift */; };
 		6C847F3B2AC4EF2000A50F4B /* SocialAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C847F3A2AC4EF2000A50F4B /* SocialAppUITestsLaunchTests.swift */; };
+		6C847F502AC51FC500A50F4B /* WelcomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C847F4F2AC51FC500A50F4B /* WelcomeModel.swift */; };
+		6C847F522AC5209700A50F4B /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C847F512AC5209700A50F4B /* WelcomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		6C847F342AC4EF2000A50F4B /* SocialAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C847F382AC4EF2000A50F4B /* SocialAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAppUITests.swift; sourceTree = "<group>"; };
 		6C847F3A2AC4EF2000A50F4B /* SocialAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6C847F4F2AC51FC500A50F4B /* WelcomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModel.swift; sourceTree = "<group>"; };
+		6C847F512AC5209700A50F4B /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 		6C847F492AC4F59C00A50F4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C847F4F2AC51FC500A50F4B /* WelcomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 		6C847F4A2AC4F5A700A50F4B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6C847F512AC5209700A50F4B /* WelcomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -294,6 +300,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C847F502AC51FC500A50F4B /* WelcomeModel.swift in Sources */,
+				6C847F522AC5209700A50F4B /* WelcomeViewModel.swift in Sources */,
 				6C847F1C2AC4EF1F00A50F4B /* ViewController.swift in Sources */,
 				6C847F182AC4EF1F00A50F4B /* AppDelegate.swift in Sources */,
 				6C847F1A2AC4EF1F00A50F4B /* SceneDelegate.swift in Sources */,
