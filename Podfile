@@ -7,7 +7,6 @@ target 'SocialApp' do
 
   # Pods for SocialApp
 
-  pod 'IQKeyboardManagerSwift' 
 
   target 'SocialAppTests' do
     inherit! :search_paths
