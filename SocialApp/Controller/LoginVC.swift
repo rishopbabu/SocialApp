@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
     
     private weak var imageBackground: UIImageView!
     
@@ -50,19 +50,21 @@ class ViewController: UIViewController {
     
     // MARK: - User interactions
     
-    @objc private func loginButtonTapped() {
+    @objc private func loginButtonAction() {
         debugPrint("LoginButtonTapped")
     }
     
+    @objc private func createAccountButtonAction() {
+        debugPrint("signupButtonAction")
+    }
     
-    // MARK: Nwtworks
+    
+    // MARK: - Networks
     
     
     // MARK: - UI and constraints methods
     
     private func setupViews() {
-        
-        let placeholderText = NSAttributedString(string: StringConstants.email, attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         
         let imageBackgroundItem = UIImageView()
         imageBackgroundItem.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +117,7 @@ class ViewController: UIViewController {
         loginButtonItem.setTitle(StringConstants.login, for: .normal)
         loginButtonItem.backgroundColor = .systemGray
         loginButtonItem.layer.cornerRadius = 20
-        loginButtonItem.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        loginButtonItem.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         self.loginButton = loginButtonItem
         self.view.addSubview(loginButtonItem)
         
@@ -134,6 +136,7 @@ class ViewController: UIViewController {
         createAccountButtonItem.setTitle(StringConstants.createAccount, for: .normal)
         createAccountButtonItem.backgroundColor = .lightGray
         createAccountButtonItem.layer.cornerRadius = 20
+        createAccountButtonItem.addTarget(self, action: #selector(createAccountButtonAction), for: .touchUpInside)
         self.createAccountButton = createAccountButtonItem
         self.view.addSubview(createAccountButtonItem)
         
@@ -149,7 +152,7 @@ class ViewController: UIViewController {
             imageBackground.rightAnchor.constraint(equalTo: view.rightAnchor),
             imageBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            titleLabel.topAnchor.constraint(equalTo: imageBackground.safeAreaLayoutGuide.topAnchor, constant: 50),
+            titleLabel.topAnchor.constraint(equalTo: imageBackground.safeAreaLayoutGuide.topAnchor, constant: 150),
             titleLabel.leftAnchor.constraint(equalTo: imageBackground.leftAnchor, constant: 20),
             titleLabel.rightAnchor.constraint(equalTo: imageBackground.rightAnchor, constant: -20),
             

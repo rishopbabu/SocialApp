@@ -13,7 +13,7 @@ class WelcomeViewModel {
     
     func performNetworkRequest() {
         
-        guard let exampleURL = URL(string: "http://localhost:8000/") else {
+        guard let exampleURL = URL(string: URLConstants.baseURL) else {
             print("Invalid URL")
             return
         }
