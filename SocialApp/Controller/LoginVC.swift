@@ -27,7 +27,10 @@ class LoginVC: UIViewController {
     
     
     
-    var viewModel = WelcomeViewModel()
+    var viewModel: WelcomeViewModel = WelcomeViewModel()
+    
+    var loginModel: LoginViewModel = LoginViewModel()
+    
     var wellcomeData: WelcomeModel?
     
     // MARK: - LifeCycle
@@ -51,11 +54,43 @@ class LoginVC: UIViewController {
     // MARK: - User interactions
     
     @objc private func loginButtonAction() {
-        debugPrint("LoginButtonTapped")
+        
+        guard let username = emailTextField.text, !username.isEmpty else {
+            let alert = UIAlertController(title: "Login Failed", message: "Please enter a username", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            let alert = UIAlertController(title: "Login Failed", message: "Please enter a password", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        loginModel.loginRequest(userName: username, password: password) { success in
+            if success {
+                DispatchQueue.main.async {
+                    let homeVC = SignupVC()
+                    self.navigationController?.setNavigationBarHidden(true, animated: true)
+                    self.navigationController?.pushViewController(homeVC, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Login Failed", message: "Invalid Credentials", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+        
     }
     
     @objc private func createAccountButtonAction() {
-        debugPrint("signupButtonAction")
+        let homeVC = SignupVC()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.pushViewController(homeVC, animated: true)
     }
     
     
